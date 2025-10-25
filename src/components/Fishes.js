@@ -1,13 +1,25 @@
-import { useRecoilState } from 'recoil'
-import moment from 'moment'
+import { useAtom } from 'jotai'
+import { useState, useEffect } from 'react'
 import { Container, Block } from './Layout'
 import Fish from './Fish/Fish'
 import FishesData from '../utils/database/fishes_data'
 import { hemisphere, filters } from '../services/Recoil'
 
 function Fishes() {
-  const [hemisphereValue] = useRecoilState(hemisphere)
-  const [filtersValue] = useRecoilState(filters);
+  const [hemisphereValue] = useAtom(hemisphere)
+  const [filtersValue] = useAtom(filters)
+  const [currentTime, setCurrentTime] = useState(new Date())
+
+  useEffect(() => {
+    // Update every hour (3600000 milliseconds)
+    const interval = setInterval(() => {
+      setCurrentTime(new Date())
+    }, 3600000)
+
+    return () => clearInterval(interval)
+  }, [])
+
+  const MONTH_NAMES = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
 
   const formatSchedule = (data) => {
@@ -41,7 +53,8 @@ function Fishes() {
       let firstVal = season[0];
       let secondVal = season[season.length - 1];
 
-      result = `${moment().month(firstVal).format('MMM')} ➡ ${moment().month(secondVal).format('MMM')}`;
+      // Convert 1-indexed month to 0-indexed array access
+      result = `${MONTH_NAMES[firstVal - 1]} ➡ ${MONTH_NAMES[secondVal - 1]}`;
     });
 
     return result;
@@ -55,8 +68,8 @@ function Fishes() {
     let result = false;
     let isSeasonal = false;
     let currentSeason = season[hemisphereValue];
-    let currentMonth = moment().format('M');
-    let currentHour = moment().format('H');
+    let currentMonth = (currentTime.getMonth() + 1).toString(); // 1-indexed month
+    let currentHour = currentTime.getHours().toString();
 
     if (Object.keys(season).length === 0) {
       isSeasonal = true;
@@ -87,7 +100,7 @@ function Fishes() {
     }
 
     if (filtersValue === 'This month') {
-      let currentMonth = moment().format('M');
+      let currentMonth = (currentTime.getMonth() + 1).toString(); // 1-indexed month
 
       return FishesData.filter((fish) => {
         let value = false;
@@ -105,7 +118,7 @@ function Fishes() {
 
     if (filtersValue === 'Last chance') {
       return FishesData.filter((fish) => {
-        let currentMonth = moment().format('M');
+        let currentMonth = (currentTime.getMonth() + 1).toString(); // 1-indexed month
         let fishSeason = fish.seasons[hemisphereValue];
         if (Object.keys(fish.seasons).length === 0) {
           return false;
@@ -120,14 +133,14 @@ function Fishes() {
   }
 
   return (
-    <>
+    <div className="py-4">
       <Container>
         {renderFishes().length === 0 ?
             <Block>
               <p>Nothing to show</p>
             </Block>
             :
-            <div className="grid grid-cols-1 gap-2 justify-items-center md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
+            <div className="grid grid-cols-1 gap-3 justify-items-center md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
               {renderFishes().map((fish) => {
                 return (
                     <Fish
@@ -145,7 +158,7 @@ function Fishes() {
               })}
             </div>}
       </Container>
-    </>
+    </div>
   );
 }
 

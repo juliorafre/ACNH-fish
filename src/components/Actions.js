@@ -4,14 +4,16 @@ import ButtonGroup from './ButtonGroup/ButtonGroup'
 
 function Actions() {
   return (
-    <Container>
-      <HStack>
-        <Title>
-          In Water!
-        </Title>
-        <ButtonGroup/>
-      </HStack>
-    </Container>
+    <div className="py-3">
+      <Container>
+        <HStack>
+          <Title>
+            In Water!
+          </Title>
+          <ButtonGroup/>
+        </HStack>
+      </Container>
+    </div>
   )
 }
 

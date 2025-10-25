@@ -1,70 +1,96 @@
-# Getting Started with Create React App
+# ACNH Fish Tracker
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+An Animal Crossing: New Horizons fishing companion app that helps players track which fish are currently available based on time, season, and hemisphere.
 
-## Available Scripts
+## Tech Stack
 
-In the project directory, you can run:
+- **Next.js 16** - React framework with App Router and Turbopack
+- **React 19** - Latest React version
+- **TypeScript** - Full type safety with strict mode
+- **Recoil** - State management
+- **Tailwind CSS 3** - Utility-first styling
+- **pnpm** - Fast, disk-efficient package manager
+- **Native JavaScript APIs** - Zero dependencies for date/time operations
 
-### `yarn start`
+## Getting Started
 
-Runs the app in the development mode.\
+### Prerequisites
+
+Make sure you have [pnpm](https://pnpm.io/) installed:
+
+```bash
+npm install -g pnpm
+```
+
+### Installation
+
+```bash
+pnpm install
+```
+
+### Development
+
+Run the development server:
+
+```bash
+pnpm dev
+```
+
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### Build for Production
 
-### `yarn test`
+```bash
+pnpm build
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Start Production Server
 
-### `yarn build`
+```bash
+pnpm start
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Linting
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```bash
+pnpm lint
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Features
 
-### `yarn eject`
+- **Time-based filtering**: See which fish are available right now
+- **Seasonal tracking**: View fish available this month
+- **Last chance alerts**: Don't miss fish leaving soon
+- **Hemisphere support**: Switch between Northern and Southern hemispheres
+- **Responsive design**: Works on desktop and mobile
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Project Structure
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+- `app/` - Next.js App Router pages and layouts
+- `src/components/` - React components
+- `src/utils/` - Utility functions and data models
+- `src/services/` - Recoil state management
+- `public/` - Static assets
 
 ## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- [Next.js Documentation](https://nextjs.org/docs)
+- [React Documentation](https://react.dev)
+- [Tailwind CSS Documentation](https://tailwindcss.com/docs)
+- [Recoil Documentation](https://recoiljs.org)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Code Quality
 
-### Code Splitting
+This project follows modern best practices:
+- ✅ **TypeScript** for type safety
+- ✅ **ESLint** with strict rules
+- ✅ **Next.js Image** optimization
+- ✅ **Error boundaries** for graceful error handling
+- ✅ **Loading states** for better UX
+- ✅ **Zero legacy dependencies** (removed Moment.js - saved 200KB!)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+See [CODE_QUALITY_IMPROVEMENTS.md](./CODE_QUALITY_IMPROVEMENTS.md) for details.
 
-### Analyzing the Bundle Size
+## Migration Notes
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+This project was migrated from Create React App to Next.js 16. See [MIGRATION.md](./MIGRATION.md) for details.

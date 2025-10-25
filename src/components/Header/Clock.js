@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import moment from 'moment';
 
 const Clock = () => {
   const initialState = {
@@ -14,14 +13,30 @@ const Clock = () => {
   }
 
   function setTimeInHTML() {
-    const currentTime = moment().locale('es').format('HH:mm');
-    const currentYear = moment().locale('es').format('MMMM');
-    const currentDay = moment().locale('es').format('D');
-    const currentDayName = moment().locale('es').format('ddd');
+    const now = new Date();
+
+    // Format time as HH:mm
+    const currentTime = new Intl.DateTimeFormat('es', {
+      hour: '2-digit',
+      minute: '2-digit',
+      hour12: false,
+    }).format(now);
+
+    // Format month name
+    const currentYear = new Intl.DateTimeFormat('es', {
+      month: 'long',
+    }).format(now);
+
+    // Get day number
+    const currentDay = now.getDate();
+
+    // Format day name
+    const currentDayName = new Intl.DateTimeFormat('es', {
+      weekday: 'short',
+    }).format(now);
 
     setState({
-      ...state,
-      time: `${currentTime}`,
+      time: currentTime,
       date: `${currentDay} de ${toCapitalize(currentYear)} ${toCapitalize(
         currentDayName
       )}`,

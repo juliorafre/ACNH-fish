@@ -1,10 +1,10 @@
-import { useRecoilState } from 'recoil'
-import { filters } from '../../services/Recoil' 
+import { useAtom } from 'jotai'
+import { filters } from '../../services/Recoil'
 import { FILTERS_FUNC } from '../../utils/index'
 import Button from '../Button/Button'
 
 const ButtonGroup = () => {
-  const [filter, setFilter] = useRecoilState(filters)
+  const [filter, setFilter] = useAtom(filters)
   return (
     <div>
       {

@@ -1,11 +1,11 @@
 import React from 'react';
-import { useRecoilState } from 'recoil'
+import { useAtom } from 'jotai'
 import { hemisphere } from '../services/Recoil'
 import { HEMISPHERES } from '../utils';
 import Button from './Button/Button';
 
 function SelectHemisphere() {
-  const [hemisphereValue, setHemisphere] = useRecoilState(hemisphere)
+  const [hemisphereValue, setHemisphere] = useAtom(hemisphere)
 
   return (
     <div className="flex-row flex-no-wrap justify-center items-center hidden sm:flex">

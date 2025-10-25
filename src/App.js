@@ -5,16 +5,16 @@ import Actions from './components/Actions'
 import Fishes from './components/Fishes'
 //import Footer from './components/Footer/Footer'
 //Global State
-import { RecoilRoot } from 'recoil';
+import { Provider } from 'jotai';
 
 function App() {
   return (
-    <RecoilRoot>
+    <Provider>
       <Header/>
       <Actions/>
       <Fishes />
       {/*<Footer />*/}
-    </RecoilRoot>
+    </Provider>
   )
 }
 

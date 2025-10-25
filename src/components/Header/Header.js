@@ -6,17 +6,14 @@ import SelectHemisphere from '../SelectHemisphere';
 import WithLove from '../WithLove'
 import { Block, HStack, Spacer, Container } from '../Layout'
 
-//images
-import Logo from '../../assets/static/img/header/logo/Logo_Fish_Inc.png';
-
 const Header = () => {
   return (
-    <header>
+    <header className="py-4">
       <Container>
         <Block>
           <HStack>
             <figure className="logo w-auto">
-              <img  src={Logo} alt="FishInc." />
+              <img  src="/img/Logo_Fish_Inc.png" alt="FishInc." />
             </figure>
             <Separador />
             <SelectHemisphere />

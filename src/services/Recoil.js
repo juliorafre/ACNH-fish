@@ -1,16 +1,10 @@
-import { atom } from 'recoil'
+import { atom } from 'jotai'
 // Utils
 import { HEMISPHERES, FILTERS_FUNC } from '../utils'
 
-const hemisphere = atom({
-  key: 'hemisphere',
-  default: HEMISPHERES.South,
-});
+const hemisphere = atom(HEMISPHERES.South);
 
-const filters = atom({
-  key: 'filters',
-  default: FILTERS_FUNC.now,
-});
+const filters = atom(FILTERS_FUNC.now);
 
 export {
   hemisphere,

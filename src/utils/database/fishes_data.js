@@ -1,4 +1,3 @@
-/* eslint-disable */
 const fishes_data = [
   {
     id: 1,

@@ -1,5 +1,3 @@
-/* eslint-disable eqeqeq */
-/* eslint-disable camelcase */
 import { HEMISPHERES } from '../utils'
 /**
  * Representacion de un Pez.
@@ -45,11 +43,11 @@ class Fish {
 
   get getNormalizeSchedule () {
     let result = 'Some error'
-    if (this.schedule.length == 0) {
+    if (this.schedule.length === 0) {
       return 'All day'
     }
 
-    if (this.schedule[0][0] != undefined) {
+    if (this.schedule[0][0] !== undefined) {
       const firstFromHour = this.schedule[0][0]
       const firstToHour = this.schedule[0][this.schedule[0].length - 1]
       const secondFromHour = this.schedule[1][0]
@@ -82,7 +80,7 @@ class Fish {
     const date = new Date()
     const month = date.getMonth() + 1
 
-    if (hemisphere != HEMISPHERES.South && hemisphere != HEMISPHERES.North) {
+    if (hemisphere !== HEMISPHERES.South && hemisphere !== HEMISPHERES.North) {
       throw new Error(
         `Los valores posibles son "North" y "South" - Valor utilizado ${hemisphere}"`
       )
@@ -105,19 +103,19 @@ class Fish {
     const date = new Date()
     const hours = date.getHours()
 
-    if (hemisphere != HEMISPHERES.South && hemisphere != HEMISPHERES.North) {
+    if (hemisphere !== HEMISPHERES.South && hemisphere !== HEMISPHERES.North) {
       throw new Error(
         `Los valores posibles son "North" y "South" - Valor utilizado ${hemisphere}"`
       )
     }
 
     if (this.appearsThisMonth(hemisphere)) {
-      if (this.schedule == []) return true
+      if (this.schedule.length === 0) return true
 
-      if (this.schedule.length == []) {
+      if (this.schedule.length === 0) {
         result = true
         return result
-      } else if (this.schedule[0][1] != undefined) {
+      } else if (this.schedule[0][1] !== undefined) {
         this.schedule.forEach((hoursGroup) => {
           if (hoursGroup.includes(hours)) {
             result = true
@@ -145,7 +143,7 @@ class Fish {
    * @param {string} hemisphere - El hemisferio a seleccionar "North" o "South"
    */
   static allFishesAppearsThisMonth (data, hemisphere) {
-    if (hemisphere != HEMISPHERES.South && hemisphere != HEMISPHERES.North) {
+    if (hemisphere !== HEMISPHERES.South && hemisphere !== HEMISPHERES.North) {
       throw new Error(
         `Los valores posibles son "North" y "South" - Valor utilizado ${hemisphere}"`
       )
@@ -163,7 +161,7 @@ class Fish {
    * @param {string} hemisphere - El hemisferio a seleccionar "North" o "South"
    */
   static allFishesAppearsNow (data, hemisphere) {
-    if (hemisphere != HEMISPHERES.South && hemisphere != HEMISPHERES.North) {
+    if (hemisphere !== HEMISPHERES.South && hemisphere !== HEMISPHERES.North) {
       throw new Error(
         `Los valores posibles son "North" y "South" - Valor utilizado ${hemisphere}"`
       )
@@ -194,7 +192,7 @@ class Fish {
   static dataToFishes (data) {
     return data.map((fish) => {
       const tempFish = new Fish({...fish})
-      return tempFish;
+      return tempFish
     })
   }
 }

@@ -1,5 +1,10 @@
-import React from 'react';
-const Fish = ({
+import React from 'react'
+import Image from 'next/image'
+import { FishProps } from '../../types'
+
+const NAME_LENGTH_THRESHOLD = 14
+
+const Fish: React.FC<FishProps> = ({
   id,
   name,
   price,
@@ -10,14 +15,14 @@ const Fish = ({
   inWater,
 }) => {
   const urlFishImage =
-    'https://res.cloudinary.com/juliorafrecloud/image/upload/v1590362447/Fishes/Fish';
+    'https://res.cloudinary.com/juliorafrecloud/image/upload/v1590362447/Fishes/Fish'
 
-  const formatLongNames = (name) => {
-    if (name.length > 14) {
-      return 'text-sm';
+  const formatLongNames = (name: string): string => {
+    if (name.length > NAME_LENGTH_THRESHOLD) {
+      return 'text-sm'
     }
-    return 'text-lg';
-  };
+    return 'text-lg'
+  }
 
   return (
     <div
@@ -26,15 +31,19 @@ const Fish = ({
       } fishTile bg-white w-fisTileWMAx h-fishHTileDefault mx-2 mt-3 rounded-lg pr-3 pl-0 py-2 shadow-md hover:shadow-lg grid grid-cols-4 grid-rows-2 hover:-translate-y-1 transform`}
     >
       <div className="image_flags col-span-1 row-span-2 flex flex-col flex-no-wrap justify-between items-center mr-1 ">
-        <div className="overflow-hidden flex flex-row justify-center items-center p-1">
-          <img src={`${urlFishImage}${id}.png`} alt={name} />
+        <div className="overflow-hidden flex flex-row justify-center items-center p-1 relative w-full h-20">
+          <Image
+            src={`${urlFishImage}${id}.png`}
+            alt={name}
+            fill
+            sizes="100px"
+            style={{ objectFit: 'contain' }}
+          />
         </div>
         <div className="flagtags">
-          { inWater ?
-              <div className="greenflag inline-block -mr-3 rounded-full w-4 h-4 bg-fish-accent-green self-center shadow border-2 border-solid border-white" />
-              :
-              ''
-          }
+          {inWater ? (
+            <div className="greenflag inline-block -mr-3 rounded-full w-4 h-4 bg-fish-accent-green self-center shadow border-2 border-solid border-white" />
+          ) : null}
         </div>
       </div>
 
@@ -67,9 +76,7 @@ const Fish = ({
         {!inWater ? (
           <div className="pl-2">
             <p className="text-xs text-gray-500">Seasons</p>
-            <p className="font-semibold text-base -mt-1">
-              {seasons}
-            </p>
+            <p className="font-semibold text-base -mt-1">{seasons}</p>
           </div>
         ) : (
           <div className="pl-2">
@@ -79,7 +86,7 @@ const Fish = ({
         )}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Fish;
+export default Fish
